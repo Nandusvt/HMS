@@ -3,7 +3,6 @@
 
 <pre>
 Name: Nandu Soman V T
-TVE23CS098
 Class : S5 CSE B2
 </pre>
 
