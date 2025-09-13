@@ -1,5 +1,5 @@
 # Hospital-Management-System-DBMS
-<b>Link</b> : https://github.com/Nandusvt/Hospital_Management_System
+<b>Link</b> : https://github.com/Nandusvt/HMS
 
 <pre>
 Name: Nandu Soman V T
