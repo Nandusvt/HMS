@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route
 } from "react-router-dom";
 import Home from './Home';
@@ -45,47 +45,23 @@ export default function App() {
   return (
     <Router>
       <div>
-        <Switch>
-          <Route path="/NoMedHistFound">
-            <NoMedHistFound />
-          </Route>
-          <Route path="/MakeDoc">
-            <MakeDoc />
-          </Route>
-          <Route path="/Settings">
-            <Settings />
-          </Route>
-          <Route path="/MedHistView">
-            <ViewMedHist />
-          </Route>
-          <Route path="/scheduleAppt">
-            <SchedulingAppt />
-          </Route>
-          <Route path="/showDiagnoses/:id" render={props=><ShowDiagnoses {...props} />} />
-          <Route path="/Diagnose/:id" render={props=><Diagnose {...props} />} />
-          <Route name="onehist" path="/ViewOneHistory/:email" render={props=><ViewOneHistory {...props} />}/>
-          <Route path="/Home">
-            <Home />
-          </Route>
-          <Route path="/createAcc">
-            <CreateAccount />
-          </Route>
-          <Route path="/DocHome">
-            <DocHome />
-          </Route>
-          <Route path="/PatientsViewAppt">
-            <PatientsViewAppt />
-          </Route>
-          <Route path="/DocSettings">
-            <DocSettings />
-          </Route>
-          <Route path="/ApptList">
-            <DocViewAppt />
-          </Route>
-          <Route path="/">
-            {component}
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/NoMedHistFound" element={<NoMedHistFound />} />
+          <Route path="/MakeDoc" element={<MakeDoc />} />
+          <Route path="/Settings" element={<Settings />} />
+          <Route path="/MedHistView" element={<ViewMedHist />} />
+          <Route path="/scheduleAppt" element={<SchedulingAppt />} />
+          <Route path="/showDiagnoses/:id" element={<ShowDiagnoses />} />
+          <Route path="/Diagnose/:id" element={<Diagnose />} />
+          <Route path="/ViewOneHistory/:email" element={<ViewOneHistory />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/createAcc" element={<CreateAccount />} />
+          <Route path="/DocHome" element={<DocHome />} />
+          <Route path="/PatientsViewAppt" element={<PatientsViewAppt />} />
+          <Route path="/DocSettings" element={<DocSettings />} />
+          <Route path="/ApptList" element={<DocViewAppt />} />
+          <Route path="/" element={component} />
+        </Routes>
       </div>
     </Router>
   );

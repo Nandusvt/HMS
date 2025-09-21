@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
     Box,
@@ -24,16 +25,19 @@ const theme = {
     },
 };
 
-var id;
+function ShowDiagnosesWrapper() {
+    const params = useParams();
+    return <ShowDiagnoses id={params.id} />;
+}
 
 export class ShowDiagnoses extends Component {
     constructor(props) {
         super(props);
-        id = props.match.params.id;
+        this.id = props.id;
     }
     state = { diagnoses: [] }
     componentDidMount() {
-        fetch('http://localhost:3001/showDiagnoses?id='+ id)
+        fetch('http://localhost:3001/showDiagnoses?id='+ this.id)
         .then(res => res.json())
         .then(res => this.setState({ diagnoses: res.data }));
     }
@@ -107,4 +111,4 @@ export class ShowDiagnoses extends Component {
         );
     }
 }
-export default ShowDiagnoses;
+export default ShowDiagnosesWrapper;

@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -37,16 +37,22 @@ const AppBar = (props) => (
     {...props} />
 );
 
+function LogInWrapper() {
+    const navigate = useNavigate();
+    return <LogIn navigate={navigate} />;
+}
+
 class LogIn extends Component {
   state = { isDoctor: false }
 
-  constuctor() {
+  constructor(props) {
+    super(props);
     this.routeChange = this.routeChange.bind(this);
   }
 
   routeChange() {
     let path = '/Home';
-    this.props.history.push(path);
+    this.props.navigate(path);
   }
 
   render() {
@@ -137,4 +143,4 @@ class LogIn extends Component {
     );
   }
 }
-export default withRouter(LogIn);
+export default LogInWrapper;

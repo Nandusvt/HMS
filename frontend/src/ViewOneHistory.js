@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
     Box,
@@ -24,10 +25,15 @@ const theme = {
     },
 };
 
+function ViewOneHistoryWrapper() {
+    const params = useParams();
+    return <ViewOneHistory email={params.email} />;
+}
+
 export class ViewOneHistory extends Component {
     state = { medhiststate: [], medhiststate2: []}
     componentDidMount() {
-        const { email } = this.props.match.params;
+        const email = this.props.email;
         this.allDiagnoses(email);
         this.getHistory(email);
     }
@@ -205,4 +211,4 @@ export class ViewOneHistory extends Component {
         );
     }
 }
-export default ViewOneHistory;
+export default ViewOneHistoryWrapper;
