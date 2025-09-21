@@ -14,7 +14,7 @@ VALUES
 
 INSERT INTO Doctor(email, gender, password, name)
 VALUES
-('nandusomanvt@gmail.com', 'male', 'Nandu', 'Nandu Soman V T')
+('nandu@gmail.com', 'male', 'Nandu', 'Nandu Soman V T')
 ;
 
 INSERT INTO Appointment(id,date,starttime,endtime,status)
@@ -57,7 +57,7 @@ VALUES
 
 INSERT INTO DocsHaveSchedules(sched,doctor)
 VALUES
-(001,'nandusomanvt@gmail.com')
+(001,'nandu@gmail.com')
 ;
 
 INSERT INTO DoctorViewsHistory(history,doctor)
