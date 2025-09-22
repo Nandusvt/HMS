@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -23,12 +22,7 @@ const theme = {
 };
 var diagnosis;
 var prescription;
-
-function DiagnoseWrapper() {
-    const params = useParams();
-    return <Diagnose id={params.id} />;
-}
-
+var id;
 const AppBar = (props) => (
   <Box
     tag='header'
@@ -87,7 +81,7 @@ const PrescriptionTextArea = () => {
 export class Diagnose extends Component {
   constructor(props) {
     super(props);
-    this.id = props.id;
+    id = props.match.params.id;
   }
   render() {
     return (
@@ -99,7 +93,7 @@ export class Diagnose extends Component {
           <Form
             onSubmit={({ value }) => {
               fetch("http://localhost:3001/diagnose?diagnosis=" + diagnosis + "&prescription=" + prescription
-              + "&id=" + this.id).then(()=>{
+              + "&id=" + id).then(()=>{
               })
               window.alert("Diagnosis Submitted!");
             }}
@@ -120,4 +114,4 @@ export class Diagnose extends Component {
     );
   }
 }
-export default DiagnoseWrapper;
+export default Diagnose;

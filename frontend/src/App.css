@@ -7,7 +7,7 @@
 }
 
 .App-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,156 +18,14 @@
 }
 
 .App-link {
-  color: #4A90E2;
+  color: #000000;
 }
 
-/* Modern table styling */
 table {
   border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
+  border-spacing: 50px 0;
 }
 
-table th {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 16px 20px;
-  font-weight: 600;
-  text-align: left;
-  border: none;
-}
-
-table td {
-  padding: 16px 20px;
-  border-bottom: 1px solid #e8ecf4;
-  color: #2c3e50;
-}
-
-table tr:last-child td {
-  border-bottom: none;
-}
-
-table tr:hover {
-  background-color: #f8f9ff;
-}
-
-/* Professional header styling */
-.professional-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 2px 20px rgba(102, 126, 234, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.home-icon {
-  font-size: 28px;
-  color: #fff;
-}
-
-.hms-title {
-  color: #fff !important;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin: 0;
-}
-
-/* Professional cards */
-.professional-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  margin: 20px 0;
-  border: 1px solid #e8ecf4;
-  transition: all 0.3s ease;
-}
-
-.professional-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Modern form styling */
-.modern-form {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 32px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* Professional buttons */
-.professional-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  border: none !important;
-  border-radius: 8px !important;
-  padding: 12px 24px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.5px !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
-}
-
-.professional-button:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
-}
-
-/* Sidebar styling */
-.professional-sidebar {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sidebar-button {
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  margin: 4px 8px;
-}
-
-.sidebar-button:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  transform: translateX(4px);
-}
-
-/* Welcome section */
-.welcome-section {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
-  text-align: center;
-  padding: 40px 20px;
-}
-
-/* Professional container */
-.professional-container {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  min-height: 100vh;
-  padding: 20px;
-}
-
-/* Medical theme colors */
-:root {
-  --primary-blue: #667eea;
-  --primary-purple: #764ba2;
-  --secondary-blue: #4A90E2;
-  --success-green: #27AE60;
-  --warning-orange: #F39C12;
-  --error-red: #E74C3C;
-  --text-dark: #2c3e50;
-  --text-light: #7f8c8d;
-  --background-light: #f8f9fa;
+td {
+  padding: 10px 0;
 }
