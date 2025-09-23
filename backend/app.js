@@ -1,6 +1,9 @@
 var createError = require('http-errors');
 var express = require('express');
-var mysql = require('mysql2');
+var path = require('path');
+//Logger that was used for debugging, commented later
+// var logger = require('morgan');
+var mysql = require('mysql');
 var cors = require('cors');
 var port = 3001
 
@@ -26,9 +29,13 @@ var who = "";
 
 var app = express();
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
 // app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 //Signup, Login, Password Reset Related Queries
@@ -306,20 +313,16 @@ app.get('/checkIfApptExists', (req, res) => {
           INNER JOIN Schedule ON DocsHaveSchedules.sched=Schedule.id
           WHERE doctor="${doc_email}" AND 
           day=DAYNAME(${sql_date}) AND 
-          (DATE_ADD(${sql_start},INTERVAL +1 HOUR) <= breaktime OR ${sql_start} >= DATE_ADD(breaktime,INTERVAL +1 HOUR));`
-          //not in doctor schedule
+          (${sql_start} < starttime OR ${sql_start} >= endtime OR 
+          (${sql_start} >= breaktime AND ${sql_start} < DATE_ADD(breaktime,INTERVAL +1 HOUR)));`
+          //check if appointment is outside doctor's schedule or during break time
           console.log(statement)
           con.query(statement, function (error, results, fields) {
             if (error) throw error;
             else {
-              if(results.length){
-                results = []
-              }
-              else{
-                results = [1]
-              }
+              cond3 = results;
               return res.json({
-                data: cond1.concat(cond2,results)
+                data: cond1.concat(cond2, cond3)
               })
             };
           });
@@ -651,12 +654,9 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // return JSON error instead of rendering
+  // render the error page
   res.status(err.status || 500);
-  res.json({
-    message: err.message,
-    error: req.app.get('env') === 'development' ? err : {}
-  });
+  res.render('error');
 });
 
 app.listen(port, () => {
