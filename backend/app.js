@@ -313,20 +313,16 @@ app.get('/checkIfApptExists', (req, res) => {
           INNER JOIN Schedule ON DocsHaveSchedules.sched=Schedule.id
           WHERE doctor="${doc_email}" AND 
           day=DAYNAME(${sql_date}) AND 
-          (DATE_ADD(${sql_start},INTERVAL +1 HOUR) <= breaktime OR ${sql_start} >= DATE_ADD(breaktime,INTERVAL +1 HOUR));`
-          //not in doctor schedule
+          (${sql_start} < starttime OR ${sql_start} >= endtime OR 
+          (${sql_start} >= breaktime AND ${sql_start} < DATE_ADD(breaktime,INTERVAL +1 HOUR)));`
+          //check if appointment is outside doctor's schedule or during break time
           console.log(statement)
           con.query(statement, function (error, results, fields) {
             if (error) throw error;
             else {
-              if(results.length){
-                results = []
-              }
-              else{
-                results = [1]
-              }
+              cond3 = results;
               return res.json({
-                data: cond1.concat(cond2,results)
+                data: cond1.concat(cond2, cond3)
               })
             };
           });
